@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: c:\libs\
+Main-Class: com.paul.scratch.CayovaRSS
+
