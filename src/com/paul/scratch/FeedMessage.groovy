@@ -1,6 +1,4 @@
-package com.paul.scratch;
-
-import java.sql.Timestamp;
+package com.paul.scratch
 
 public class FeedMessage {
 
@@ -10,12 +8,11 @@ public class FeedMessage {
     String author;
     String guid;
     String modified;
+    List<Enclosure> enclosures = new ArrayList<Enclosure>();
 
     @Override
     public String toString() {
-        return "FeedMessage [title=" + title + ", description=" + description
-        + ", link=" + link + ", author=" + author + ", guid=" + guid
-        + "]";
+        return "FeedMessage [title=" + title + ", description=" + description + ", link=" + link + ", author=" + author + ", guid=" + guid + "]";
     }
 
 }
