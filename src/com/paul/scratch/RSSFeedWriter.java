@@ -49,10 +49,24 @@ public class RSSFeedWriter {
         eventWriter.add(eventFactory.createAttribute("version", "2.0"));
         eventWriter.add(eventFactory.createNamespace("content", "http://purl.org/rss/1.0/modules/content/"));
         eventWriter.add(eventFactory.createNamespace("dc", "http://purl.org/dc/elements/1.1/"));
+        eventWriter.add(eventFactory.createNamespace("atom", "http://www.w3.org/2005/Atom"));
         eventWriter.add(end);
 
         eventWriter.add(eventFactory.createStartElement("", "", "channel"));
         eventWriter.add(end);
+
+        Attribute atomSelf = eventFactory.createAttribute("href", "https://portal.patternbridge.com/db/cayova.rss");
+        Attribute rel = eventFactory.createAttribute("rel", "self");
+        Attribute type = eventFactory.createAttribute("type", "application/rss+xml");
+        List attributeList = Arrays.asList(atomSelf, rel, type);
+        List nsList = Arrays.asList();
+        StartElement sElement = eventFactory.createStartElement("", "", "atom:link", attributeList.iterator(), nsList.iterator());
+        eventWriter.add(sElement);
+
+        EndElement eElement = eventFactory.createEndElement("", "", "enclosure");
+        eventWriter.add(eElement);
+        eventWriter.add(end);
+
 
         // Write the different nodes
 
@@ -91,18 +105,15 @@ public class RSSFeedWriter {
             for (Enclosure enc : entry.getEnclosures()) {
                 //TODO: WTF? There has to be a better XML model in java than this
                 Attribute length = eventFactory.createAttribute("length", "0");
-                Attribute type = eventFactory.createAttribute("type", enc.getType());
+                type = eventFactory.createAttribute("type", enc.getType());
                 Attribute url = eventFactory.createAttribute("url", enc.getUrl());
-                List attributeList = Arrays.asList(length, type, url);
-                List nsList = Arrays.asList();
-                StartElement sElement = eventFactory.createStartElement("", "", "enclosure", attributeList.iterator(), nsList.iterator());
-                eventWriter.add(sElement);
-                // Create End node
-                EndElement eElement = eventFactory.createEndElement("", "", "enclosure");
-                eventWriter.add(eElement);
+                attributeList = Arrays.asList(length, type, url);
+                nsList = Arrays.asList();
+
                 eventWriter.add(end);
-
-
+                eventWriter.add(eventFactory.createStartElement("", "", "enclosure", attributeList.iterator(), nsList.iterator()));
+                eventWriter.add(end);
+                eventWriter.add(eventFactory.createEndElement("", "", "enclosure"));
             }
             eventWriter.add(end);
             eventWriter.add(eventFactory.createEndElement("", "", "item"));

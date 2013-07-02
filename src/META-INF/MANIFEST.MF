@@ -1,3 +1,40 @@
 Manifest-Version: 1.0
+Class-Path: commons-io-2.4.jar abeilleformbuilder-3.0.jar ant-1.8.4.ja
+ r ant-antlr-1.8.4.jar ant-junit-1.8.4.jar ant-launcher-1.8.4.jar antl
+ r-2.7.7.jar asm-4.0.jar asm-analysis-4.0.jar asm-commons-4.0.jar asm-
+ tree-4.0.jar asm-util-4.0.jar batik-anim-1.7.jar batik-awt-util-1.7.j
+ ar batik-bridge-1.7.jar batik-codec-1.7.jar batik-css-1.7.jar batik-d
+ om-1.7.jar batik-ext-1.7.jar batik-extension-1.7.jar batik-gui-util-1
+ .7.jar batik-gvt-1.7.jar batik-parser-1.7.jar batik-script-1.7.jar ba
+ tik-svg-dom-1.7.jar batik-svggen-1.7.jar batik-swing-1.7.jar batik-tr
+ anscoder-1.7.jar batik-util-1.7.jar batik-xml-1.7.jar bsf-2.4.0.jar c
+ ommons-cli-1.2.jar commons-logging-1.1.1.jar cssbuilder-1.0.0.jar css
+ parser-0.9.5.jar easyb-core-1.5.jar filters-2.0.235.jar flamingo-4.1.
+ jar flamingobuilder-0.5.jar forms-1.2.1.jar formsrt-2.1.0M1.jar gant-
+ 1.9.9_groovy-2.1.0.jar gfxbuilder-core-0.8.jar gfxbuilder-svg-0.8.jar
+  gfxbuilder-swingx-0.8.jar gmock-0.8.2.jar gpars-1.0.0.jar groovy-2.1
+ .3.jar groovy-ant-2.1.3.jar groovy-bsf-2.1.3.jar groovy-console-2.1.3
+ .jar groovy-docgenerator-2.1.3.jar groovy-groovydoc-2.1.3.jar groovy-
+ groovysh-2.1.3.jar groovy-jmx-2.1.3.jar groovy-json-2.1.3.jar groovy-
+ jsr223-2.1.3.jar groovy-servlet-2.1.3.jar groovy-sql-2.1.3.jar groovy
+ -swing-2.1.3.jar groovy-templates-2.1.3.jar groovy-test-2.1.3.jar gro
+ ovy-testng-2.1.3.jar groovy-xml-2.1.3.jar groovyserv-0.11.jar hamcres
+ t-core-1.3.jar ivy-2.2.0.jar jacob-1.14.3.jar jansi-1.6.jar jcommande
+ r-1.27.jar jcsp-1.1-rc5.jar jide-oss-3.4.7.jar jidebuilder-6.0.jar jl
+ ine-1.0.jar jna-3.2.7.jar jsilhouette-geom-0.4.jar jsp-api-2.0.jar js
+ r166y-1.7.0.jar junit-4.11.jar macwidgetsbuilder-0.5.jar mac_widgets-
+ 0.9.5.jar multiverse-core-0.7.0.jar netty-3.6.2.Final.jar qdox-1.12.1
+ .jar sac-1.3.jar scriptom-1.6.0.jar scriptom-ie-6-tlb-1.6.0.jar scrip
+ tom-office-2K3-tlb-1.6.0.jar scriptom-sapi-tlb-1.6.0.jar scriptom-scr
+ ipting-tlb-1.6.0.jar scriptom-wbem-tlb-1.6.0.jar scriptom-wsh-tlb-1.6
+ .0.jar servlet-api-2.4.jar spock-core-0.7-groovy-2.0-20120930.020057-
+ 22.jar svg-salamander-1.1.jar swing-worker-1.1.jar swingx-action-1.6.
+ 4.jar swingx-autocomplete-1.6.4.jar swingx-beaninfo-1.6.4.jar swingx-
+ common-1.6.4.jar swingx-core-1.6.4.jar swingx-graphics-1.6.4.jar swin
+ gx-painters-1.6.4.jar swingx-plaf-1.6.4.jar swingxbuilder-0.3.jar tes
+ tng-6.8.jar timingframework-1.0.jar trident-7.0.jar tridentbuilder-0.
+ 6.jar xml-apis-ext-1.3.04.jar xmlpull-1.1.3.1.jar xstream-1.4.2.jar j
+ son-lib-2.4-jdk15.jar joda-time-2.2.jar commons-beanutils-1.8.3.jar c
+ ommons-collections-3.2.1.jar ezmorph-1.0.6.jar commons-lang-2.5.jar
 Main-Class: com.paul.scratch.CayovaRSS
 

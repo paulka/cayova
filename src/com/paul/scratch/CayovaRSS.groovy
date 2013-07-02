@@ -15,25 +15,34 @@ class CayovaRSS {
 
     public static void main(String[] args) throws Exception {
 
+        int oldHash = 0
         while (true) {
-            RunUpdate()
-            sleep(120000)
+            try {
+                oldHash = RunUpdate(oldHash)
+            }
+            catch (Exception ex) {
+                ex.printStackTrace()
+            }
+            sleep(30000)
         }
     }
 
-    private static void RunUpdate() {
+    private static int RunUpdate(int oldHash) {
         Feed feed = BuildCayovaFeedEnvelope()
         String jsonTxt = GetReponse("https://cayova.com/api/timelines/global?count=30&_=1370005561362");
-        JSONSerializer.toJSON(jsonTxt).getJSONArray("objects").each { post ->
-            feed.entries.add(GetPost(post))
+        if (oldHash != jsonTxt.hashCode()) {
+            JSONSerializer.toJSON(jsonTxt).getJSONArray("objects").each { post ->
+                feed.entries.add(GetPost(post))
+            }
+            RSSFeedWriter writer = new RSSFeedWriter(feed, "C:\\Users\\paul.kavanagh\\Documents\\Dropbox\\db\\cayova.rss");
+            try {
+                writer.write()
+            } catch (Exception e) {
+                e.printStackTrace()
+            }
+            System.out.println(formatRFC822.print(new Date().toString()) + ":" + feed.toString());
         }
-        RSSFeedWriter writer = new RSSFeedWriter(feed, "C:\\Users\\paul.kavanagh\\Documents\\Dropbox\\db\\cayova.rss");
-        try {
-            writer.write()
-        } catch (Exception e) {
-            e.printStackTrace()
-        }
-        System.out.println(formatRFC822.print(new Date().toString()) + ":" + feed.toString());
+        jsonTxt.hashCode()
     }
 
     private static FeedMessage GetPost(post) {
@@ -48,9 +57,24 @@ class CayovaRSS {
                 description: body,
                 title: (body.length() > 60) ? body.subSequence(0, 60) + "..." : body,
                 modified: formatRFC822.print(formatISO.parseDateTime(post.getString("modified"))))
-        message.enclosures = GetEnclosures(post)
+        message.enclosures = GetAvatar(contact)
         message
     }
+
+    private static List<Enclosure> GetAvatar(JSONObject contact) {
+        List<Enclosure> enclosures = []
+        Object links = contact.get("links")
+        if (links instanceof JSONArray) {
+            links.each { link ->
+                if (link.getString("rel") == "avatar") {
+                    Enclosure enc = new Enclosure(length: 0, type: "image/png", url: link.getString("url"))
+                    enclosures.add(enc)
+                }
+            }
+        }
+        enclosures
+    }
+
 
     private static List<Enclosure> GetEnclosures(post) {
         List<Enclosure> enclosures = []
